@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50 text-gray-900 font-sans leading-relaxed">
+
+    <!-- Header -->
+    <header class="bg-gradient-to-l from-indigo-600 to-purple-600 text-white py-6 shadow-xl">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <h1 class="text-2xl md:text-5xl font-extrabold tracking-tight leading-tight cursor-pointer transition-all duration-300 transform hover:scale-105 hover:text-purple-300">
+                My Profile
+            </h1>
+            <nav class="hidden md:flex space-x-10 text-lg font-medium">
+                <li><a href="landingpage.html" class="hover:text-gray-100 transition-all duration-300">Home</a></li>
+                <li><a href="#footer" class="hover:text-gray-100 transition-all duration-300">Contact</a></li>
+                <li><a href="#profile" class="bg-white text-indigo-600 hover:bg-indigo-500 hover:text-white transition duration-300 px-6 py-3 rounded-full shadow-md">Profile</a></li>
+            </nav>
+            <!-- Mobile Nav Toggle -->
+            <div class="md:hidden">
+                <button class="text-white focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Profile Header Section -->
+        <section class="text-center mb-12">
+            <h2 class="text-4xl font-extrabold text-gray-800 mb-6">Welcome back, [User Name]!</h2>
+            <p class="text-lg text-gray-600">Here’s your profile information.</p>
+        </section>
+
+        <!-- Profile Information Section -->
+        <section class="bg-white rounded-lg shadow-xl p-10 mb-10">
+            <h3 class="text-3xl font-semibold text-gray-800 mb-6">Your Information</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <!-- Displaying User's Role -->
+                <div class="col-span-1">
+                    <label class="text-gray-600 font-semibold">Role</label>
+                    <p class="text-gray-700">[Business Owner/Investor]</p>
+                </div>
+
+                <!-- Displaying Name -->
+                <div class="col-span-1">
+                    <label class="text-gray-600 font-semibold">Full Name</label>
+                    <p class="text-gray-700">[User's Full Name]</p>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="col-span-1">
+                    <label class="text-gray-600 font-semibold">Email Address</label>
+                    <p class="text-gray-700">[User's Email]</p>
+                </div>
+
+                <div class="col-span-1">
+                    <label class="text-gray-600 font-semibold">Phone Number</label>
+                    <p class="text-gray-700">[User's Phone]</p>
+                </div>
+            </div>
+
+            <!-- Business Information (if Business Owner) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="col-span-1">
+                    <label class="text-gray-600 font-semibold">Company Name</label>
+                    <p class="text-gray-700">[User's Company Name]</p>
+                </div>
+
+                <div class="col-span-1">
+                    <label class="text-gray-600 font-semibold">Industry</label>
+                    <p class="text-gray-700">[User's Industry]</p>
+                </div>
+            </div>
+        </section>
+
+<!-- Button to Display the First Investor -->
+<section class="text-center mt-8">
+    <button id="displayInvestorsBtn" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold py-4 px-8 rounded-lg shadow-md hover:from-indigo-500 hover:to-purple-500 transition-all duration-300 transform hover:scale-105">Display First Investor
+
+        
+    </button>
+</section>
+
+<!-- Display Section for Investors (Initially Hidden) -->
+<section id="investorList" class="hidden mt-12">
+    <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Suitable Investors for You</h3>
+    <div id="investorListContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Investor cards will be dynamically added here -->
+    </div>
+    
+    <!-- Subscription Plan -->
+    <div id="subscriptionPlan" class="hidden mt-8 text-center">
+        <h4 class="text-xl font-semibold text-gray-800">Subscribe to Unlock More Investors</h4>
+        <p class="text-gray-600 mb-4">Get access to all suitable investors and receive new investor suggestions when they match your needs!</p>
+        <button id="subscribeBtn" class="bg-green-500 text-white font-semibold py-2 px-6 rounded-lg hover:bg-green-400 transition-all duration-300">
+            Subscribe Now
+        </button>
+    </div>
+</section>
+
+<script>
+    document.getElementById("displayInvestorsBtn").addEventListener("click", function() {
+        document.getElementById("investorList").classList.remove("hidden");
+        fetchInvestorsFromAI()
+            .then(investors => {
+                const investorListContainer = document.getElementById("investorListContainer");
+                investorListContainer.innerHTML = ''; // Clear any existing content
+
+                // Display only the first investor
+                const firstInvestor = investors[0];
+                const firstInvestorCard = createInvestorCard(firstInvestor);
+                investorListContainer.appendChild(firstInvestorCard);
+
+                // Show subscription plan prompt
+                document.getElementById("subscriptionPlan").classList.remove("hidden");
+
+                // Store the full list of investors for later use
+                window.fullInvestorList = investors;
+            })
+            .catch(error => {
+                console.error("Error fetching investors:", error);
+                alert("Failed to load investor data. Please try again later.");
+            });
+    });
+
+    // Handle Subscription
+    document.getElementById("subscribeBtn").addEventListener("click", function() {
+        // Show the remaining investors
+        const investorListContainer = document.getElementById("investorListContainer");
+        
+        // Clear previous content and show all investors
+        investorListContainer.innerHTML = ''; 
+
+        // Render all investors from the AI model
+        window.fullInvestorList.forEach(investor => {
+            const investorCard = createInvestorCard(investor);
+            investorListContainer.appendChild(investorCard);
+        });
+
+        // Hide the subscription prompt after subscribing
+        document.getElementById("subscriptionPlan").classList.add("hidden");
+
+        // Suggest new investors dynamically (for now, just a simulation)
+        suggestNewInvestor();
+    });
+
+    // Function to create an investor card
+function createInvestorCard(investor) {
+    const investorCard = document.createElement("div");
+    investorCard.classList.add("bg-white", "p-6", "rounded-lg", "shadow-lg", "text-center");
+
+    investorCard.innerHTML = `
+        <h4 class="font-bold text-xl text-indigo-600">${investor.name}</h4>
+        <p class="text-gray-700">Industry: ${investor.industry}</p>
+        <p class="text-gray-700">Investment Range: ${investor.investmentRange}</p>
+    `;
+
+    return investorCard;
+}
+
+
+    // Simulating AI fetching a tailored list of investors
+    function fetchInvestorsFromAI() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const investors = [
+                    { name: "Investor A", industry: "Tech", investmentRange: "$500K - $5M" },
+                    { name: "Investor B", industry: "Healthcare", investmentRange: "$1M - $10M" },
+                    { name: "Investor C", industry: "FinTech", investmentRange: "$2M - $15M" }
+                ];
+                resolve(investors); // Return the full list of investors
+            }, 2000);
+        });
+    }
+
+    // Simulate suggesting a new suitable investor
+    function suggestNewInvestor() {
+        setTimeout(() => {
+            const newInvestor = { name: "Investor D", industry: "AI", investmentRange: "$3M - $20M" };
+            const investorListContainer = document.getElementById("investorListContainer");
+            const newInvestorCard = createInvestorCard(newInvestor);
+            investorListContainer.appendChild(newInvestorCard);
+            alert("New suitable investor suggested!");
+        }, 3000);
+    }
+</script>
+
+
+
+    </main>
+
+    <footer id="footer" class="p-10 bg-gradient-to-r from-purple-100 to-indigo-100">
+        <div class="flex flex-col md:flex-row justify-between items-center space-y-10 md:space-y-0 md:space-x-10 my-20">
+        <!-- Sponsor Matchmaker Section (Aligned Left) -->
+        <div class="flex flex-col space-y-5 text-left w-full md:w-auto">
+            <h3 class="uppercase text-3xl text-purple-600 font-bold">Sponsor Matchmaker</h3>
+            <span class="text-gray-600"></span>
+          </div>
+      
+          <!-- About Us Section (Centered) -->
+          <div class="flex flex-col space-y-3 text-center md:text-left items-center">
+            <h3 class="font-bold text-lg">About Us</h3>
+            <a href="#" class="text-gray-600 hover:text-purple-600">Email: Itpowerpuffgirls@gmail.com</a>
+            <a href="#" class="text-gray-600 hover:text-purple-600">Phone Number: 055555555</a>
+          </div>
+      
+        </div>
+      </footer>
+
+</body>
+
+</html>

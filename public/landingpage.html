@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sponsor Matchmaker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans leading-relaxed">
+
+  <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-6">
+    <div class="container mx-auto flex justify-between items-center px-6">
+      <div class="flex items-center space-x-4">
+        <h1 class="text-3xl font-bold tracking-tight">Sponsor Matchmaker</h1>
+      </div>
+      <nav>
+        <ul class="flex space-x-6 text-lg font-medium">
+          <li><a href="#" class="hover:text-gray-200 transition duration-300">Home</a></li>
+          <li><a href="#footer" class="hover:text-gray-200 transition duration-300">Contact</a></li>
+          <li><a href="#signup" class="hover:text-gray-200 transition duration-300">Sign Up</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+
+  <main class="container mx-auto px-6 py-12">
+
+<!-- Hero Section -->
+<section class="text-center py-16 bg-gradient-to-r from-indigo-600 to-purple-500 rounded-xl shadow-lg">
+    <h2 class="text-5xl font-extrabold text-white mb-6">Empowering Algerian Innovation, Fueling Local Success</h2>
+    <p class="text-lg text-white mb-8 font-semibold">Leverage AI-powered solutions to connect with the right localsponsors and elevate your business to the next level.</p>
+</section>
+
+
+    <!-- How it Works Section -->
+<section class="py-16 bg-gradient-to-r from-purple-100 to-indigo-100">
+    <div class="container mx-auto text-center">
+      <h3 class="text-4xl font-bold mb-12 text-gray-800">How It Works</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        <!-- Step 1 -->
+        <div class="relative bg-white p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+          <img src="category.jpg" alt="Choose Your Category" class="w-full h-64 object-cover rounded-t-lg shadow-md mb-4">
+          <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-full flex items-center justify-center shadow-lg">
+            <i class="fas fa-search text-2xl"></i>
+          </div>
+          <h4 class="text-2xl font-semibold mb-4 mt-4">Step 1: Sign Up</h4>
+          <p class="text-gray-600">Select whether you're a business looking for investors or an investor looking for an investment . We offer tailored solutions for various types of industries.</p>
+        </div>
+  
+        <!-- Step 2 -->
+        <div class="relative bg-white p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+          <img src="AI.jpg" alt="AI Matching" class="w-full h-64 object-cover rounded-t-lg shadow-md mb-4">
+          <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-teal-500 to-green-500 text-white rounded-full flex items-center justify-center shadow-lg">
+            <i class="fas fa-cogs text-2xl"></i>
+          </div>
+          <h4 class="text-2xl font-semibold mb-4 mt-4">Step 2: AI Matching</h4>
+          <p class="text-gray-600">Our AI-driven system will analyze your needs and match you with the best sponsors that align with your goals.</p>
+        </div>
+  
+        <!-- Step 3 -->
+        <div class="relative bg-white p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+          <img src="collaboration.jpg" alt="Connect & Collaborate" class="w-full h-64 object-cover rounded-t-lg shadow-md mb-4">
+          <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full flex items-center justify-center shadow-lg">
+            <i class="fas fa-handshake text-2xl"></i>
+          </div>
+          <h4 class="text-2xl font-semibold mb-4 mt-4">Step 3: Connect & Collaborate</h4>
+          <p class="text-gray-600">Once you're matched with a sponsor, you can easily connect and start collaborating on your sponsorship deal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Dynamic Text Section -->
+  <section id="signup" class="py-16 bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
+    <div class="container mx-auto text-center space-y-12">
+      <!-- Dynamic Text -->
+      <p class="text-2xl font-medium">
+        Sponsor Match makes it easier than ever to <span id="dynamic-word" class="font-bold underline decoration-teal-400">connect</span> sponsorships.
+      </p>
+      <!-- Grid Section -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-12">
+        <!-- Section for those seeking sponsors -->
+        <div class="bg-white/20 backdrop-blur-lg rounded-lg p-8 shadow-lg transform hover:scale-105 transition-transform duration-300">
+          <h3 class="text-2xl font-bold mb-6">I NEED A SPONSOR</h3>
+          <a href="http://localhost:3000/business" 
+            class="inline-block bg-gradient-to-r from-indigo-500 to-purple-500 text-white py-3 px-8 rounded-full font-semibold hover:opacity-90 transition duration-300 shadow-lg">
+            Sign Up For Free
+          </a>
+        </div>
+        <!-- Section for sponsors -->
+        <div class="bg-white/20 backdrop-blur-lg rounded-lg p-8 shadow-lg transform hover:scale-105 transition-transform duration-300">
+          <h3 class="text-2xl font-bold mb-6">I AM A SPONSOR</h3>
+          <a href="http://localhost:3000/investor" 
+            class="inline-block bg-gradient-to-r from-indigo-500 to-purple-500 text-white py-3 px-8 rounded-full font-semibold hover:opacity-90 transition duration-300 shadow-lg">
+            Sign Up For Free
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <script>
+      const words = ['Deliver', 'Pitch', 'Connect', 'Secure'];
+      let wordIndex = 0;
+      let letterIndex = 0;
+      const dynamicWordElement = document.getElementById('dynamic-word');
+
+      function changeWord() {
+        dynamicWordElement.textContent = '';
+        const currentWord = words[wordIndex];
+        const interval = setInterval(function() {
+          dynamicWordElement.textContent += currentWord[letterIndex];
+          letterIndex++;
+          if (letterIndex === currentWord.length) {
+            clearInterval(interval);
+            letterIndex = 0;
+            wordIndex = (wordIndex + 1) % words.length;
+            setTimeout(changeWord, 500);
+          }
+        }, 100);
+      }
+      changeWord();
+    </script>
+
+  <!-- Sponsors by Industry Section -->
+<section class="bg-gradient-to-r from-indigo-100 to-purple-100 p-12 rounded-lg shadow-2xl">
+    <h3 class="text-4xl font-bold text-center text-purple-800 mb-8">Discover Sponsors by Industry</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+      <!-- Technology Card -->
+      <div class="bg-gradient-to-r from-purple-200 to-indigo-200 p-8 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
+        <h4 class="text-2xl font-semibold text-purple-800 mb-4">Technology</h4>
+        <p class="text-gray-800">Explore sponsors focused on innovation and tech startups.</p>
+      </div>
+      <!-- Healthcare Card -->
+      <div class="bg-gradient-to-r from-purple-200 to-indigo-200 p-8 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
+        <h4 class="text-2xl font-semibold text-purple-800 mb-4">Healthcare</h4>
+        <p class="text-gray-800">Connect with sponsors in the health and wellness sector.</p>
+      </div>
+      <!-- Education Card -->
+      <div class="bg-gradient-to-r from-purple-200 to-indigo-200 p-8 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
+        <h4 class="text-2xl font-semibold text-purple-800 mb-4">Education</h4>
+        <p class="text-gray-800">Find sponsors passionate about learning and growth.</p>
+      </div>
+    </div>
+  </section>
+  
+
+    <!-- Features Section -->
+    <section id="features" class="py-12 bg-gradient-to-r from-indigo-100 to-purple-100">
+        <h3 class="text-4xl font-bold text-center mb-12">Features</h3>
+        <div class="grid gap-12 md:grid-cols-3">
+          <!-- Feature 1 -->
+          <div class="bg-white shadow-lg rounded-lg p-8 text-center">
+            <div class="bg-purple-600 text-white w-16 h-16 mx-auto flex items-center justify-center rounded-full mb-6">
+                <img src="microchip.png" alt="Payments Icon" class="w-10 h-10 text-green-500">
+              <i class="fas fa-search text-2xl"></i>
+            </div>
+            <h4 class="text-2xl font-semibold mb-4">AI-Driven Matching</h4>
+            <p class="text-gray-700">Our system uses AI to match businesses with the best sponsors for their goals.</p>
+          </div>
+          <!-- Feature 2 -->
+          <div class="bg-white shadow-lg rounded-lg p-8 text-center">
+            <div class="bg-purple-600 text-white w-16 h-16 mx-auto flex items-center justify-center rounded-full mb-6">
+                <img src="generating.png" alt="Payments Icon" class="w-10 h-10 text-green-500">
+              <i class="fas fa-file-alt text-2xl"></i>
+            </div>
+            <h4 class="text-2xl font-semibold mb-4">Custom Proposal Generation</h4>
+            <p class="text-gray-700">Generate personalized sponsorship proposals in seconds.</p>
+          </div>
+          <!-- Feature 3 -->
+          <div class="bg-white shadow-lg rounded-lg p-8 text-center">
+            <div class="bg-purple-600 text-white w-16 h-16 mx-auto flex items-center justify-center rounded-full mb-6">
+                <img src="opportunity.png" alt="Payments Icon" class="w-10 h-10 text-green-500">
+              <i class="fas fa-chart-line text-2xl"></i>
+            </div>
+            <h4 class="text-2xl font-semibold mb-4">Specific Sponsorship Opportunities</h4>
+            <p class="text-gray-700"> Discover sponsorships tailored to different industries like technology, healthcare, and education.</p>
+          </div>
+        </div>
+      </section>
+
+  </main>
+
+  <footer id="footer" class="p-10 bg-gradient-to-r from-purple-100 to-indigo-100">
+    <div class="flex flex-col md:flex-row justify-between items-center space-y-10 md:space-y-0 md:space-x-10 my-20">
+      <!-- Sponsor Matchmaker Section (Aligned Left) -->
+      <div class="flex flex-col space-y-5 text-left w-full md:w-auto">
+        <h3 class="uppercase text-3xl text-purple-600 font-bold">Sponsor Matchmaker</h3>
+        <span class="text-gray-600"></span>
+      </div>
+  
+      <!-- About Us Section (Centered) -->
+      <div class="flex flex-col space-y-3 text-center md:text-left items-center">
+        <h3 class="font-bold text-lg">About Us</h3>
+        <a href="#" class="text-gray-600 hover:text-purple-600">Email: Itpowerpuffgirls@gmail.com</a>
+        <a href="#" class="text-gray-600 hover:text-purple-600">Phone Number: 055555555</a>
+      </div>
+  
+    </div>
+  </footer>
+  
+  
+  
+
+</body>
+</html>

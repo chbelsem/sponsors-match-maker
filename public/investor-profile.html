@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50 text-gray-900 font-sans leading-relaxed">
+
+    <!-- Header -->
+    <header class="bg-gradient-to-l from-indigo-600 to-purple-600 text-white py-6 shadow-xl">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <h1 class="text-2xl md:text-5xl font-extrabold tracking-tight leading-tight cursor-pointer transition-all duration-300 transform hover:scale-105 hover:text-purple-300">
+                Investor Profile
+            </h1>
+            <nav class="hidden md:flex space-x-10 text-lg font-medium">
+                <li><a href="landingpage.html" class="hover:text-gray-100 transition-all duration-300">Home</a></li>
+                <li><a href="#footer" class="hover:text-gray-100 transition-all duration-300">Contact</a></li>
+                <li><a href="#profile" class="bg-white text-indigo-600 hover:bg-indigo-500 hover:text-white transition duration-300 px-6 py-3 rounded-full shadow-md">Profile</a></li>
+            </nav>
+            <!-- Mobile Nav Toggle -->
+            <div class="md:hidden">
+                <button class="text-white focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Profile Header Section -->
+        <section class="text-center mb-12">
+            <h2 class="text-4xl font-extrabold text-gray-800 mb-6">Welcome back, [Investor Name]!</h2>
+            <p class="text-lg text-gray-600">Here’s your profile information.</p>
+        </section>
+
+        <!-- Profile Information Section -->
+        <section class="bg-white rounded-lg shadow-xl p-10 mb-10">
+            <h3 class="text-3xl font-semibold text-gray-800 mb-6">Your Information</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <!-- Displaying Investor's Role -->
+                <div class="col-span-1">
+                    <label class="text-gray-600 font-semibold">Role</label>
+                    <p class="text-gray-700">Investor</p>
+                </div>
+
+                <!-- Displaying Investor's Name -->
+                <div class="col-span-1">
+                    <label class="text-gray-600 font-semibold">Full Name</label>
+                    <p class="text-gray-700">[Investor's Full Name]</p>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="col-span-1">
+                    <label class="text-gray-600 font-semibold">Email Address</label>
+                    <p class="text-gray-700">[Investor's Email]</p>
+                </div>
+
+                <div class="col-span-1">
+                    <label class="text-gray-600 font-semibold">Phone Number</label>
+                    <p class="text-gray-700">[Investor's Phone]</p>
+                </div>
+            </div>
+
+            <!-- Investment Information -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="col-span-1">
+                    <label class="text-gray-600 font-semibold">Investment Range</label>
+                    <p class="text-gray-700">[Investment Range]</p>
+                </div>
+
+                <div class="col-span-1">
+                    <label class="text-gray-600 font-semibold">Industry Focus</label>
+                    <p class="text-gray-700">[Investor's Industry Focus]</p>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            document.getElementById("displayBusinessBtn").addEventListener("click", function() {
+                document.getElementById("businessList").classList.remove("hidden");
+                fetchBusinessesFromAI()
+                    .then(businesses => {
+                        const businessListContainer = document.getElementById("businessListContainer");
+                        businessListContainer.innerHTML = ''; // Clear any existing content
+        
+                        // Display all businesses without restrictions
+                        businesses.forEach(business => {
+                            const businessCard = createBusinessCard(business);
+                            businessListContainer.appendChild(businessCard);
+                        });
+                    })
+                    .catch(error => {
+                        console.error("Error fetching businesses:", error);
+                        alert("Failed to load business data. Please try again later.");
+                    });
+            });
+        
+            // Function to create a business card
+            function createBusinessCard(business) {
+                const businessCard = document.createElement("div");
+                businessCard.classList.add("border", "rounded-lg", "shadow", "p-4", "bg-gray-50", "hover:bg-gray-100", "transition", "duration-300", "flex", "flex-col", "justify-between");
+        
+                businessCard.innerHTML = `
+                    <div>
+                        <h4 class="font-bold text-lg text-indigo-700 mb-2">${business.name}</h4>
+                        <p class="text-sm text-gray-600">Industry: <span class="font-medium">${business.industry}</span></p>
+                        <p class="text-sm text-gray-600">Investment Needed: <span class="font-medium">${business.investmentRange}</span></p>
+                    </div>
+                    <button class="mt-4 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 transition duration-300">
+                        View Details
+                    </button>
+                `;
+        
+                return businessCard;
+            }
+        
+            // Simulating AI fetching a tailored list of businesses
+            function fetchBusinessesFromAI() {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        const businesses = [
+                            { name: "Business A", industry: "Tech", investmentRange: "$500K - $5M" },
+                            { name: "Business B", industry: "Healthcare", investmentRange: "$1M - $10M" },
+                            { name: "Business C", industry: "FinTech", investmentRange: "$2M - $15M" }
+                        ];
+                        resolve(businesses); // Return the full list of businesses
+                    }, 2000);
+                });
+            }
+        </script>
+        
+        <!-- Button to Display Investments -->
+        <div class="flex justify-center mt-10">
+            <button id="displayBusinessBtn" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold py-2 px-4 rounded-lg hover:from-indigo-500 hover:to-purple-500 transition duration-300">
+                Display Suitable Investments
+            </button>
+        </div>
+        
+        <!-- Container to Display Business List -->
+        <div id="businessList" class="hidden mt-10">
+            <div id="businessListContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+        </div>
+        
+        
+        
+
+    <footer id="footer" class="p-10 bg-gradient-to-r from-purple-100 to-indigo-100">
+        <div class="flex flex-col md:flex-row justify-between items-center space-y-10 md:space-y-0 md:space-x-10 my-20">
+          <!-- Sponsor Matchmaker Section (Aligned Left) -->
+          <div class="flex flex-col space-y-5 text-left w-full md:w-auto">
+            <h3 class="uppercase text-3xl text-purple-600 font-bold">Sponsor Matchmaker</h3>
+            <span class="text-gray-600"></span>
+          </div>
+      
+          <!-- About Us Section (Centered) -->
+          <div class="flex flex-col space-y-3 text-center md:text-left items-center">
+            <h3 class="font-bold text-lg">About Us</h3>
+            <a href="#" class="text-gray-600 hover:text-purple-600">Email: Itpowerpuffgirls@gmail.com</a>
+            <a href="#" class="text-gray-600 hover:text-purple-600">Phone Number: 055555555</a>
+          </div>
+      
+        </div>
+      </footer>
+
+</body>
+
+</html>

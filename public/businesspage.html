@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up for Sponsorship</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans leading-relaxed">
+
+  <header class="bg-gradient-to-l from-indigo-600 to-purple-600 text-white py-6 shadow-xl">
+    <div class="container mx-auto flex justify-between items-center px-6">
+      <!-- Logo and Title with Animation -->
+      <h1 class="text-2xl md:text-5xl font-extrabold tracking-tight leading-tight cursor-pointer transition-all duration-300 transform hover:scale-105 hover:text-purple-300">
+        Sponsor Matchmaker
+      </h1>
+  
+      <!-- Navigation Menu -->
+      <nav class="hidden md:flex space-x-10 text-lg font-medium">
+        <!-- Link to Home (landing page) -->
+        <li><a href="landingpage.html" class="hover:text-gray-100 transition-all duration-300">Home</a></li>
+        <li><a href="#footer" class="hover:text-gray-100 transition-all duration-300">Contact</a></li>
+        <li><a href="#sign-up" class="bg-white text-indigo-600 hover:bg-indigo-500 hover:text-white transition duration-300 px-6 py-3 rounded-full shadow-md">Sign Up</a></li>
+      </nav>
+  
+  
+    </div>
+  </header>
+
+  
+
+  <!-- Main Content Section -->
+  <main class="container mx-auto px-6 py-12">
+
+<!-- Hero Section -->
+<section class="relative text-center py-16 bg-gradient-to-r from-indigo-600 to-purple-500 rounded-xl shadow-lg overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-r from-indigo-700 to-purple-600 opacity-50"></div>
+  <h2 class="relative text-4xl md:text-5xl font-extrabold text-white mb-6 z-10 font-poppins">Get Sponsored and Grow Your Project</h2>
+  <p class="relative text-lg md:text-xl text-white mb-8 max-w-2xl mx-auto z-10 font-poppins">Sign up today to connect with potential investors and take your venture to the next level. Don't miss the opportunity to elevate your project.</p>
+</section>
+
+
+
+
+  <!-- Sign-Up Form Section -->
+<section class="py-16 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-xl shadow-lg">
+  <h3 class="text-4xl font-extrabold text-center text-gray-800 mb-8">Sign Up for Sponsorship</h3>
+  <form id="signupBusinessForm" action="#" method="POST" class="max-w-4xl mx-auto bg-white p-10 rounded-lg shadow-xl space-y-6">
+    <div class="mb-6">
+      <label for="name" class="text-gray-700 text-xl font-medium">Business Name</label>
+      <input type="text" id="name" name="name" required class="w-full px-6 py-4 mt-2 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-600 transition duration-300">
+    </div>
+
+    <div class="mb-6">
+      <label for="email" class="text-gray-700 text-xl font-medium">Email Address</label>
+      <input type="email" id="email" name="email" required class="w-full px-6 py-4 mt-2 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-600 transition duration-300">
+    </div>
+
+    <div class="mb-6">
+      <label for="password" class="block text-xl font-medium text-gray-700">Password</label>
+      <div class="relative">
+          <input type="password" id="password" name="password" class="mt-2 w-full px-6 py-4 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-600 transition duration-300" required>
+          <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 px-4 py-3 text-gray-500 focus:outline-none">
+              <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.93 12.93C3.56 11.61 4.81 10.57 6.38 9.93c1.57-.64 3.33-.64 4.9 0 1.57.64 2.82 1.68 3.45 3.01 1.5 3.31-.24 7.17-3.45 8.47-1.57.64-3.33.64-4.9 0-1.57-.64-2.82-1.68-3.45-3.01-1.5-3.31.24-7.17 3.45-8.47z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12c0 1.1-.9 2-2 2s-2-.9-2-2s.9-2 2-2s2 .9 2 2z" />
+              </svg>
+          </button>
+      </div>
+  </div>
+  
+
+  <div class="mb-6 relative">
+    <label for="category" class="text-gray-700 text-xl font-medium">Category</label>
+    <select id="category" name="category" required class="w-full px-6 py-4 mt-2 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-600 transition duration-300">
+        <option value="" disabled selected>Select a Category</option>
+        <option value="Technology">Technology</option>
+        <option value="Healthcare">Healthcare</option>
+        <option value="Finance">Finance</option>
+        <option value="Education">Education</option>
+        <option value="Retail">Retail</option>
+        <option value="Manufacturing">Manufacturing</option>
+        <option value="Energy">Energy</option>
+        <option value="Real Estate">Real Estate</option>
+        <option value="Transportation">Transportation</option>
+        <option value="Entertainment">Entertainment</option>
+    </select>
+</div>
+
+
+
+
+    <div class="mb-6">
+      <label for="website" class="block text-xl font-medium text-gray-700">Website (optional)</label>
+      <input type="url" id="website" name="website" class="mt-2 w-full px-6 py-4 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-600 transition duration-300">
+    </div>
+
+    <div class="mb-6">
+      <label for="phone" class="block text-xl font-medium text-gray-700">Phone Number</label>
+      <input type="tel" id="phone" name="phone" class="mt-2 w-full px-6 py-4 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-600 transition duration-300" required>
+    </div>
+
+    <div class="mb-6">
+      <label for="funding_required" class="block text-xl font-medium text-gray-700">Funding Required</label>
+      <select id="funding_required" name="funding_required" class="mt-2 w-full px-6 py-4 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-600 transition duration-300" required>
+        <option value="10000">10,000 DZD - 50,000 DZD</option>
+        <option value="20000">60,000 DZD - 100,000 DZD</option>
+        <option value="30000">110,000 DZD - 150,000 DZD</option>
+        <option value="more">+ 150,000 DZD</option>
+      </select>
+    </div>
+
+    <div class="mb-6">
+      <label for="description" class="block text-xl font-medium text-gray-700">Business Description</label>
+      <textarea id="description" name="description" rows="6" placeholder="Enter a brief description about your Enterprise" class="mt-2 w-full px-6 py-4 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-600 transition duration-300" required></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="text-center">
+      <button type="submit" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 px-8 rounded-lg hover:scale-105">
+        Sign Up
+      </button>
+    </div>
+  </form>
+</section>
+
+<script>
+  document.getElementById('signupBusinessForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent default form submission behavior
+    alert('Sign up successful! Redirecting to your profile...');
+    window.location.href = 'business-profile.html'; // Redirect to the profile page
+  });
+</script>
+
+</main>
+
+<!-- JavaScript -->
+<script>
+document.getElementById('signupBusinessForm').addEventListener('submit', function (event) {
+  event.preventDefault(); // Prevent form from refreshing the page
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+
+  // Save to localStorage (simulating backend)
+  localStorage.setItem('userName', name);
+  localStorage.setItem('userEmail', email);
+
+  alert('Sign up successful! Redirecting to your profile...');
+  window.location.href = 'business-profile.html'; // Redirect to profile page
+});
+</script>
+
+
+<footer id="footer" class="p-10 bg-gradient-to-r from-purple-100 to-indigo-100">
+  <div class="flex flex-col md:flex-row justify-between items-center space-y-10 md:space-y-0 md:space-x-10 my-20">
+    <!-- Sponsor Matchmaker Section (Aligned Left) -->
+    <div class="flex flex-col space-y-5 text-left w-full md:w-auto">
+      <h3 class="uppercase text-3xl text-purple-600 font-bold">Sponsor Matchmaker</h3>
+      <span class="text-gray-600"></span>
+    </div>
+
+    <!-- About Us Section (Centered) -->
+    <div class="flex flex-col space-y-3 text-center md:text-left items-center">
+      <h3 class="font-bold text-lg">About Us</h3>
+      <a href="#" class="text-gray-600 hover:text-purple-600">Email: Itpowerpuffgirls@gmail.com</a>
+      <a href="#" class="text-gray-600 hover:text-purple-600">Phone Number: 055555555</a>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
