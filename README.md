@@ -2,7 +2,7 @@
 # Sponsors Match Maker
 
 ## Project Overview
-Sponsors Match Maker is a platform designed to help small business owners connect with suitable sponsors in their region. By leveraging AI, the platform recommends ideal sponsorship opportunities based on the business type, location, and other relevant criteria. Our goal is to empower small businesses by making sponsorship acquisition more accessible and efficient.
+Sponsors Match Maker is a platform designed to help small business owners connect with suitable sponsors. By leveraging AI, the platform recommends ideal sponsorship opportunities based on the business type, location, and other relevant criteria. Our goal is to empower small businesses by making sponsorship acquisition more accessible and efficient.
 
 ## Features
 - **AI-Driven Recommendations:** Utilize AI to match businesses with the most relevant sponsors .
